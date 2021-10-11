@@ -8,20 +8,17 @@
     </div>
     <div class="px-4 py-5 sm:p-6">
     <div class="flex flex-col">
-  <div>       
-  <CheckBox/> Сгенерировать репозиторий в GitHub
-  <CheckBox/> Сгенерировать 2 автотеста
-              </div>
   <div>
-         <CheckBox/> Отправить уведомление в Telegram
-              <CheckBox/> Интегрировать с задачей в Jira
-              <CheckBox/> Интегрировать с проектом в TMS Allure TestOps</div>
+      <CheckBoxesTree/>       
+ </div>
+
+ 
+  <div>
+
+              
+              </div>
   <div>3</div>
 </div>
-
-
-
-
             
     </div>
     <div class="px-4 py-4 sm:px-6">
@@ -34,13 +31,23 @@
 </template>
 
 <script>
-  import CheckBox from './CheckBox.vue';
+  import CheckBoxesTree from './CheckBoxesTree.vue';
    export default {
     name: 'Card',
     components: {
-      CheckBox,
-    },
+      CheckBoxesTree,
+    }, 
+
   };
 
 </script>
 
+<style>
+  .indent {
+    margin-left: 1em;
+  }
+
+  .db-indent {
+    margin-left: 2em;
+  }
+</style>

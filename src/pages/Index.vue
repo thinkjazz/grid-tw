@@ -30,7 +30,7 @@
 <Divider />
 <Card/>
 
-   <CheckBox />
+
 
  <button
       type="button"
@@ -59,7 +59,7 @@ query {
 <script>
 import CustomInput from '../components/Input.vue';
 import CustomButton from '../components/Button.vue';
-import CheckBox from '../components/CheckBox.vue';
+import CheckBoxesTree from '../components/CheckBoxesTree.vue';
 import Modal from '../components/Modal.vue';
 import Divider from '../components/Divider.vue';
 import Card from '../components/Card.vue';
@@ -70,7 +70,7 @@ export default {
   components: { 
     CustomInput,
     CustomButton,
-    CheckBox,
+    CheckBoxesTree,
     Modal,
     Card,
     Divider,
@@ -104,6 +104,7 @@ export default {
 body {
   background: #f5f5f5;
 }
+
 </style>
 
 
