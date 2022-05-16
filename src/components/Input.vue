@@ -7,11 +7,11 @@
       <span class="inline-flex items-center px-3 text-gray-500 border border-r-0 border-gray-300 rounded-l-md bg-gray-50 sm:text-sm">
         https://
       </span>
-      <input type="text" 
-      name="autotest" 
-      id="autotest" 
-      class="flex-1 block w-full min-w-0 px-3 py-2 border-gray-300 rounded-none rounded-r-md focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm" 
-      placeholder="example.com" />
+      <input type="text"
+      name="autotest"
+      id="autotest"
+      class="flex-1 block w-full min-w-0 px-3 py-2 border-gray-300 rounded-none rounded-r-md focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
+      v-model="url" :placeholder="url" />
     </div>
   </div>
 </template>
@@ -22,11 +22,17 @@ export default {
     placeholder: {
       type: String,
       default: "",
-    },
+    }
+
   },
+   data() {
+      return {
+        url: "qa.guru",
+      };
+    },
   methods: {
-    onInputChange(event) {
-      this.$emit("change", event.target.value);
+    onInputChange(e) {
+      this.$emit("change", e.target.value);
     },
   },
 };
