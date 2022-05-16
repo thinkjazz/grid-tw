@@ -1,27 +1,27 @@
 <template>
   <layout class="page-home">
-    <custom-input
+    <CustomInput
       placeholder="https://"
       @change="onInputChange"
     />
     <div class="space-y-4">
   <div></div>
   <div></div>
- 
+
 </div>
 
 <div class="flex justify-center">
   <div>
-      <custom-button @click="onButtonClick">Сгененировать
-    </custom-button>
+      <CustomButton @click="onButtonClick">Сгененировать
+    </CustomButton>
   </div>
- 
+
 </div>
 
 
      <div class="space-y-8">
-     <div></div>
-       <div></div>
+     <div>6565</div>
+       <div>656565</div>
      </div>
 
 <Card/>
@@ -31,7 +31,6 @@
 <Card/>
 
 
-
  <button
       type="button"
       class="btn"
@@ -39,12 +38,12 @@
     >
       Open Modal!
     </button>
-    
+
  <Modal
       v-show="isModalVisible"
       @close="closeModal"
     />
-    
+
   </layout>
 </template>
 
@@ -67,7 +66,7 @@ import Log from '../backend/api.js';
 
 
 export default {
-  components: { 
+  components: {
     CustomInput,
     CustomButton,
     CheckBoxesTree,
@@ -108,4 +107,3 @@ body {
 </style>
 
 
- 
