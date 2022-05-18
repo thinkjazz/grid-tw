@@ -11,13 +11,8 @@
 </template>
 
 <script>
-
-   export default {
-    name: 'Divider',
-    components: {
-
-    },
-  };
-
+export default {
+  name: "Divider",
+  components: {},
+};
 </script>
-
