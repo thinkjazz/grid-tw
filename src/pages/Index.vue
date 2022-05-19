@@ -1,33 +1,42 @@
 <template>
   <layout class="page-home">
-    <CustomInput placeholder="https://" @change="onInputChange" />
-    <div class="space-y-4">
-      <div></div>
-      <div></div>
-    </div>
-
-    <div class="flex justify-center">
-      <div>
-        <CustomButton @click="onButtonClick">Сгененировать</CustomButton>
+    <form v-if="!formDone" @submit.prevent="sendForm">
+      <CustomInput v-model.trim="user.url" placeholder="https://" @change="onInputChange" />
+      <div class="space-y-4">
+        <div class="form-group">
+          <label>----------------addTest</label>
+          <CustomButton @click="addTest">+</CustomButton>
+        </div>
+        <transition-group name="fade">
+          <div class="form-group" v-for="(manualTest, i) in manualTests" :key="manualTest.id">
+            <label @dblclick="removeGuest(i)">Manual Test {{ i + 1 }}</label>
+            <input v-model.trim="manualTest.value" type="text" class="form-control">
+          </div>
+        </transition-group>
       </div>
-    </div>
 
-    <div class="space-y-8">
-      <div>6565</div>
-      <div>656565</div>
-    </div>
+      <div class="flex justify-center">
+        <div>
+          <CustomButton @click="onButtonClick" :disabled="!formReady">Сгененировать</CustomButton>
+        </div>
+      </div>
 
-    <Card />
-    <Divider />
-    <Card />
-    <Divider />
-    <Card />
+      <div class="space-y-8">
+        <pre> {{ uuid }}</pre>
 
-    <button type="button" class="btn" @click="showModal">
-      Open Modal!
-    </button>
+      </div>
 
-    <Modal v-show="isModalVisible" @close="closeModal" />
+      <Card :cardDescription="saddasd" :headerIcons={} :manualTests=[] :options={} :testForm={id:1}  />
+      <Divider />
+       <Card :cardDescription="dasdas" :headerIcons={} :manualTests=[] :options={} :testForm={id:1}  />
+      <Divider />
+       <Card :cardDescription="sd" :headerIcons={} :manualTests=[] :options={} :testForm={id:1}  />
+      <Divider />
+      <Card :cardDescription="ddasdasasd" :headerIcons={} :manualTests=[] :options={} :testForm={id:1}  />
+
+
+    </form>
+
   </layout>
 </template>
 
@@ -59,11 +68,17 @@ export default {
   },
   data() {
     return {
-      uuid: "f9298b1c-cbd5-11ec-9d64-0242ac120002",
-      captcha: "",
-      url: "https://qa.guru",
+      user: {
+        url: 'https://qa.guru',
+        uuid: 'f9298b1c-cbd5-11ec-9d64-0242ac120002',
+        captcha: '',
+
+      },
+      manualTests: [],
+      manualTestsAutoIncrement: 0,
+      formDone: false,
       options: {
-        manual_tests: [
+        manualTests: [
           {
             title: "Login test",
             steps: "step1\nstep2",
@@ -76,60 +91,80 @@ export default {
         code: {
           type: "github",
           organization: "autotests-cloud",
-          repository_name: "generated",
-          generate_base_tests: true,
+          repositoryName: "generated",
+          isGenerateBaseTests: true,
         },
         infrastructure: {
           type: "jenkins",
-          create_job: true,
-          launch_job: true,
+          isGeneratingTaskRequired: true,
+          isRunningTaskRequired: true,
         },
         reporting: {
           type: "allure",
           attachments: {
-            screenshots: true,
-            video: true,
-            console_log: true,
-            page_source: true,
+            areScreenshotsRequired: true,
+            isVideoRequired: true,
+            isConsoleLogRequired: true,
+            isPageSourceRequired: true,
           },
         },
         notifications: {
           type: "telegram",
           chat: "build_in",
           bot: "build_in",
-          enabled: true,
+          required: true,
         },
-        test_management_system: {
+        testManagementSystem: {
           type: "allure_testops",
           project_name: "generated",
-          enabled: true,
+          required: true,
         },
-        issue_tracker: {
+        issueTracker: {
           type: "jira",
           project_name: "generated",
-          enabled: true,
+          required: true,
         },
       },
-      formData: {
-        url: null,
-      },
-      isModalVisible: false,
+
+
     }
   },
+  computed: {
+    formReady() {
+      return Object.values(this.user).every(val => val.length > 0);
+    }
+  },
+
   methods: {
+    addTest() {
+      this.manualTests.push({
+        id: ++this.manualTestsAutoIncrement, value: '',
+      });
+    },
+    removeTest(id) {
+      // this.manualTests = this.manualTests.filter(item => item.id !== id);
+      this.manualTests.splice(id, 1);
+    },
+    sendForm() {
+      if (this.formReady) {
+        this.formDone = true;
+        this.manualTests = this.manualTests.filter(t => t.value.length > 0);
+
+      }
+    },
     onInputChange(value) {
-      this.formData.url = value;
+      // this.formData.url = value;
     },
     onButtonClick() {
-      console.log("about to submit form with", this.formData);
-    },
-    showModal() {
-      this.isModalVisible = true;
-    },
-    closeModal() {
-      this.isModalVisible = false;
+      // console.log("about to submit form with", this.formData);
     },
   },
+  computed: {},
+
+  mounted() {
+    // Log.info("Page mounted");
+  },
+
 };
 </script>
 
