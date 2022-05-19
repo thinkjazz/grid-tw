@@ -8,6 +8,8 @@ const tailwind = require('tailwindcss');
 const purgecss = require('@fullhuman/postcss-purgecss');
 const purgeConfig = require('./purgecss.config');
 
+
+
 const postcssPlugins = [
   tailwind(),
 ];
