@@ -33,24 +33,24 @@ export default {
   props: {
     headerIcons: {
       type: Object,
-      required: true,
+      required: false,
     },
     cardDescription: {
       type: String,
-      default: "Мы созданим для вас репозиторий с кодом тестового фреймворка и первыми автотестами. Вы сможете его склонировать себе.",
-      required: true,
+      default: "",
+      required: false,
     },
     options: {
       type: Object,
-      required: true,
+      required: false,
     },
     manualTests: {
       type: Array,
-      required: true,
+      required: false,
     },
     testForm: {
       type: Object,
-      required: true,
+      required: false,
     },
 
   }
