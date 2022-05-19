@@ -30,8 +30,8 @@ export default {
     };
   },
   methods: {
-    onInputChange(e: Eve nt) {
-      this.$emit("change", e.target.value);
+    onInputChange(event) {
+      this.$emit("change", event.target.value);
     },
   },
 };

@@ -1,8 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div
-    class="overflow-hidden bg-white divide-y divide-gray-200 rounded-lg shadow"
-  >
+  <div class="overflow-hidden bg-white divide-y divide-gray-200 rounded-lg shadow">
     <div class="px-4 py-5 bg-gray-100 sm:px-6">
       хедер
       <!-- Content goes here -->
@@ -30,9 +28,33 @@ import CheckBoxesTree from "./CheckBoxesTree.vue";
 export default {
   name: "Card",
   components: {
-    CheckBoxesTree,
+  CheckBoxesTree,
   },
-};
+  props: {
+    headerIcons: {
+      type: Object,
+      required: true,
+    },
+    cardDescription: {
+      type: String,
+      default: "Мы созданим для вас репозиторий с кодом тестового фреймворка и первыми автотестами. Вы сможете его склонировать себе.",
+      required: true,
+    },
+    options: {
+      type: Object,
+      required: true,
+    },
+    manualTests: {
+      type: Array,
+      required: true,
+    },
+    testForm: {
+      type: Object,
+      required: true,
+    },
+
+  }
+}
 </script>
 
 <style>
