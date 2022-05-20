@@ -1,15 +1,18 @@
-# Auto Test Cloud Vue frontend app
+# Auto Test Cloud Vue frontend Application
 
 Built with Gridsome + Tailwind.
+## Install
+
+```yarn install```  Warning! Don't use npm install
 
 ## Commands
 
 ```npm run build``` \
 will build sources to `./dist` folder
 
-
-```npm run serve``` \
+```npm run serve``` \ OR ```npm run dev``` \
 will start local dev server http://localhost:8080
+
 
 
 ## Documentation
