@@ -22,6 +22,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.4.1",
     "@tailwindcss/forms": "^0.5.2",
-    "@vue-hero-icons/outline": "^1.7.2"
+    "@vue-hero-icons/outline": "^1.7.2",
+    "vue-final-modal": "^3.4.4"
   }
 }
