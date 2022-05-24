@@ -29,6 +29,7 @@
           <CustomButton @click="addTest">ADD</CustomButton>
         </div>
       </div>
+
       <div class="flex flex-col">
         <div
           class="form-group"
@@ -65,8 +66,17 @@
       />
       <Divider />
 
-      />
+
     </form>
+      <div>
+    <!-- <VTailwindModal v-model="show" @confirm="confirm" @cancel="cancel">
+      <template v-slot:title>Hello, vue-final-modal</template>
+      <p>Vue Final Modal is a renderless, stackable, detachable and lightweight modal component.</p>
+    </VTailwindModal> -->
+
+    <button @click="show = true">Open modal</button>
+  </div>
+
     <div><pre>{{options}}</pre></div>
   </layout>
 </template>
@@ -87,6 +97,10 @@ import Modal from "../components/Modal.vue";
 import Divider from "../components/Divider.vue";
 import Card from "../components/Card.vue";
 import Log from "../backend/api.js";
+// import VTailwindModal from "../components/VTailwindModal.vue";
+
+
+
 
 export default {
 
@@ -97,15 +111,19 @@ export default {
     Modal,
     Card,
     Divider,
+    // VTailwindModal
+
   },
   data() {
     return {
+
       url: "https://qa.guru",
       uuid: "f9298b1c-cbd5-11ec-9d64-0242ac120002",
       captcha: "",
       manualTestsAutoIncrement: 0,
       formDone: false,
       formReady: false,
+      show: false,
       options: {
         manualTests: [
           {
@@ -175,6 +193,7 @@ export default {
         value: "",
       });
     },
+
     removeTest(id) {
       // this.options.manualTests = this.options.manualTests.filter(item => item.id !== id);
       this.options.manualTests.splice(id, 1);
