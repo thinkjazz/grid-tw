@@ -15,10 +15,14 @@
             >Сгененировать</CustomButton
           >
         </div>
+
       </div>
 
-      <div class="space-y-16">
-        <div></div>
+      <div class="flex justify-center mt-6 space-y-16">
+        <div>
+                          <CustomButton @click="showModal">Open modal</CustomButton>
+                <TailwindModal  v-show="isModalVisible" @close="closeModal"/>
+        </div>
       </div>
       <div class="space-y-8">
         <pre> {{ uuid }}</pre>
@@ -68,13 +72,14 @@
 
 
     </form>
+
       <div>
     <!-- <VTailwindModal v-model="show" @confirm="confirm" @cancel="cancel">
       <template v-slot:title>Hello, vue-final-modal</template>
       <p>Vue Final Modal is a renderless, stackable, detachable and lightweight modal component.</p>
     </VTailwindModal> -->
 
-    <button @click="show = true">Open modal</button>
+
   </div>
 
     <div><pre>{{options}}</pre></div>
@@ -97,7 +102,8 @@ import Modal from "../components/Modal.vue";
 import Divider from "../components/Divider.vue";
 import Card from "../components/Card.vue";
 import Log from "../backend/api.js";
-// import VTailwindModal from "../components/VTailwindModal.vue";
+import TailwindModal from "../components/TailwindModal.vue";
+
 
 
 
@@ -111,7 +117,8 @@ export default {
     Modal,
     Card,
     Divider,
-    // VTailwindModal
+    TailwindModal,
+
 
   },
   data() {
@@ -123,7 +130,7 @@ export default {
       manualTestsAutoIncrement: 0,
       formDone: false,
       formReady: false,
-      show: false,
+      isModalVisible: false,
       options: {
         manualTests: [
           {
@@ -212,8 +219,17 @@ export default {
     onButtonClick() {
       // console.log("about to submit form with", this.formData);
     },
+    showModal() {
+      this.isModalVisible = true;
+    },
+
+    closeModal() {
+      this.isModalVisible = false;
+    },
   },
-  computed: {},
+  computed: {
+
+  },
 
   mounted() {
     // Log.info("Page mounted");

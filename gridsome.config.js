@@ -24,6 +24,7 @@ module.exports = {
   plugins: [
     {
       use: 'gridsome-plugin-seo',
+
     },
   ],
   css: {
