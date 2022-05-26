@@ -1,3 +1,3 @@
 <template>
- <input id="checkbox" type="checkbox" name="checkbox">
+  <input id="checkbox" type="checkbox" name="checkbox" />
 </template>

@@ -9,6 +9,7 @@
     <div class="px-4 py-5 sm:p-6">
       <div class="flex flex-col">
         <div>
+          <ManualTest/>
           <CheckBoxesTree />
         </div>
         <div></div>
@@ -24,11 +25,16 @@
 </template>
 
 <script>
+import ManualTest from "./ManualTest.vue";
+
 import CheckBoxesTree from "./CheckBoxesTree.vue";
+
 export default {
-  name: "Card",
+
   components: {
   CheckBoxesTree,
+  ManualTest,
+
   },
   props: {
     headerIcons: {
