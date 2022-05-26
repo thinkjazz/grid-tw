@@ -19,7 +19,7 @@
       </div>
       <div class="space-y-8"></div>
 
-      <ManualTest />
+      <!-- <ManualTest /> -->
       <!-- Начало компонента мануал тест-->
       <!-- <div class="flex justify-center mt-6">
         <div class="form-group">
@@ -65,7 +65,7 @@
     <div></div>
 
     <div>
-      <pre>{{ options }}</pre>
+      <!-- <pre>{{ options }}</pre> -->
     </div>
   </layout>
 </template>
