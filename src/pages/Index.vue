@@ -83,7 +83,7 @@ import InputUrl from "../components/InputUrl.vue";
 
 import CustomButton from "../components/Button.vue";
 import CheckBoxesTree from "../components/CheckBoxesTree.vue";
-import ManualTest from "../components/ManualTest.vue";
+// import ManualTest from "../components/ManualTest.vue";
 import Divider from "../components/Divider.vue";
 import Card from "../components/Card.vue";
 import Log from "../backend/api.js";
@@ -97,7 +97,7 @@ export default {
     Card,
     Divider,
     CustomModal,
-    ManualTest,
+    // ManualTest,
   },
   data() {
     return {
