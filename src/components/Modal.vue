@@ -170,6 +170,7 @@
 import CustomButton from "./Button.vue";
 import CustomInput from "./Input.vue";
 import CustomTextArea from "./TextArea.vue";
+
 // import { TerminalIcon }  from '@heroicons/vue/solid'
 
 export default {
@@ -184,6 +185,7 @@ export default {
     close() {
       this.$emit("close");
     },
+
   },
 };
 </script>

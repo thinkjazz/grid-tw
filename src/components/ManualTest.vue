@@ -3,11 +3,16 @@
     <div class="flex justify-center mt-6">
       <div class="form-group">
         <label>Добавить ручной тест</label>
-        <CustomButton @click="addTest">ADD</CustomButton>
+        <CustomButton @click="addTest">Добавить</CustomButton>
       </div>
     </div>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col"></div>
+      <li v-for="manualTest in options.manualTests"
+      :key="manualTest.id">
+            {{ manualTest.title }}
+                        {{ manualTest.steps }}
+      </li>
       <div
         class="form-group"
         v-for="(manualTest, i) in options.manualTests"
@@ -27,7 +32,12 @@
         ></CustomTextArea>
 
         <div class="flex justify-center mt-6">
-          <CustomButton @click="removeTest(i)">DEL</CustomButton>
+          <CustomButton class="mx-2" @click="addTest">Создать</CustomButton>
+          <CustomButton class="mx-2 bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-green-600" @click="addTest">Обновить</CustomButton>
+          <CustomButton class="inline-flex items-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-rose-500 hover:bg-rose-600 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-rose-600"
+           @click="removeTest(i)">Удалить</CustomButton>
+
+
         </div>
       </div>
     </div>
@@ -50,14 +60,16 @@ export default {
       manualTestsAutoIncrement: 0,
       options: {
         manualTests: [
-          // {
-          //   title: "Login test",
-          //   steps: "step1\nstep2",
-          // },
-          // {
-          //   title: "Registration test",
-          //   steps: "step1\nstep2",
-          // },
+          {
+            title: "Login test",
+            steps: "step1\nstep2",
+
+          },
+          {
+            title: "Registration test",
+            steps: "step1\nstep2",
+
+          },
         ],
       },
     };
@@ -66,7 +78,18 @@ export default {
     addTest() {
       this.options.manualTests.push({
         id: ++this.manualTestsAutoIncrement,
-        value: "",
+        value: "5",
+
+      });
+    },
+    createTest() {
+      Log.createTest(this.options).then((response) => {
+        console.log(response);
+      });
+    },
+    updateTest() {
+      Log.updateTest(this.options).then((response) => {
+        console.log(response);
       });
     },
 
