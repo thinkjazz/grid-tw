@@ -1,8 +1,25 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <div class="overflow-hidden bg-white divide-y divide-gray-200 rounded-lg shadow">
-    <div class="px-4 py-5 bg-gray-100 sm:px-6">
-      хедер
+    <div class="flex flex-row px-4 py-5 bg-gray-100 sm:px-6">
+
+
+
+
+    <img src="../assets/img/pictogram/Java.svg" alt="Java">
+   <img src="../assets/img/pictogram/Gradle.svg" alt="Gradle">
+
+    <img src="../assets/img/pictogram/JUnit5.svg" alt="JUnit5">
+    <img src="../assets/img/pictogram/Rest-Assured.svg" alt="Rest-Assured">
+    <img src="../assets/img/pictogram/Selenium.svg">
+		<img src="../assets/img/pictogram/Appium.svg">
+		<img src="../assets/img/pictogram/Selenide.png">
+
+
+  <!-- ... -->
+
+
+
       <!-- Content goes here -->
       <!-- We use less vertical padding on card headers on desktop than on body sections -->
     </div>
@@ -13,7 +30,7 @@
           <CheckBoxesTree />
         </div>
         <div></div>
-        <div>387867687</div>
+        <div></div>
       </div>
     </div>
     <div class="px-4 py-4 sm:px-6">
@@ -64,6 +81,11 @@ export default {
 </script>
 
 <style>
+img {
+    max-width: 5%;
+    height: auto;
+}
+
 .indent {
   margin-left: 1em;
 }
