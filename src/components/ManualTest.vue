@@ -7,12 +7,14 @@
       </div>
     </div>
 
-    <div class="flex flex-col"></div>
-      <li v-for="manualTest in options.manualTests"
+    <div class="flex flex-col">
+ <li v-for="manualTest in options.manualTests"
       :key="manualTest.id">
             {{ manualTest.title }}
-                        {{ manualTest.steps }}
+              {{ manualTest.steps }}
       </li>
+    </div>
+
       <div
         class="form-group"
         v-for="(manualTest, i) in options.manualTests"
@@ -61,8 +63,8 @@ export default {
       options: {
         manualTests: [
           {
-            title: "Login test",
-            steps: "step1\nstep2",
+            title: "",
+            steps: "",
 
           },
           {
@@ -76,21 +78,22 @@ export default {
   },
   methods: {
     addTest() {
+
       this.options.manualTests.push({
-        id: ++this.manualTestsAutoIncrement,
-        value: "5",
+        // id: ++this.manualTestsAutoIncrement,
+        title: this.title,
+        steps: this.steps,
+
 
       });
+      this.title = "";
+      this.steps = "";
     },
     createTest() {
-      Log.createTest(this.options).then((response) => {
-        console.log(response);
-      });
+      console.log(1)
     },
     updateTest() {
-      Log.updateTest(this.options).then((response) => {
-        console.log(response);
-      });
+     console.log('updated')
     },
 
     removeTest(id) {
