@@ -62,7 +62,7 @@
       <Divider />
     </form>
 
-    <div></div>
+    <div><TestFields/> </div>
 
     <div>
       <!-- <pre>{{ options }}</pre> -->
@@ -88,6 +88,7 @@ import Divider from "../components/Divider.vue";
 import Card from "../components/Card.vue";
 import Log from "../backend/api.js";
 import CustomModal from "../components/Modal.vue";
+import TestFields from "../components/TestFields.vue";
 
 export default {
   components: {
@@ -97,6 +98,7 @@ export default {
     Card,
     Divider,
     CustomModal,
+    TestFields,
     // ManualTest,
   },
   data() {
