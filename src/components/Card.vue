@@ -28,7 +28,7 @@
         <div>
 
           <TC/>
-                 <ManualTest/>
+                 <!-- <ManualTest/> -->
           <CheckBoxesTree />
         </div>
         <div></div>

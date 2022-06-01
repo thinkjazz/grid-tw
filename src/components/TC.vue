@@ -22,14 +22,6 @@
 
     </div>
     <div class="flex flex-column" v-show="tests.length">
-      <!-- <input
-        id="toggle-all"
-        class="toggle-all"
-        type="checkbox"
-
-        @change="toggleAll"
-      > -->
-      <!-- <label for="toggle-all">Mark all as complete</label> -->
 
       <ul class="flex-column">
         <li
@@ -39,8 +31,8 @@
           :class="{ editing: test === editedTest }"
         >
           <div class="view">
-            <!-- <input class="toggle" type="checkbox" v-model="test.completed"> -->
-            <label @dblclick="editTest(test)">{{ test.title }} || {{ test.steps }}</label>
+
+            <label @dblclick="editTest(test)">{{ test.title }} </label>
             <button class="destroy" @click="removeTest(test)"> | УДАЛИТЬ</button>
           </div>
           <input
@@ -69,24 +61,7 @@
     </div>
 
     <div class="footer" v-show="tests.length">
-      <!-- <span class="todo-count">
-        <strong>{{ remaining }}</strong>
-        <span>{{ remaining === 1 ? 'item' : 'items' }} left</span>
-      </span> -->
-      <!-- <ul class="filters">
-        <li>
-          <a href="#/all" :class="{ selected: visibility === 'all' }">All</a>
-        </li>
-        <li>
-          <a href="#/active" :class="{ selected: visibility === 'active' }">Active</a>
-        </li>
-        <li>
-          <a href="#/completed" :class="{ selected: visibility === 'completed' }">Completed</a>
-        </li>
-      </ul> -->
-      <!-- <button class="clear-completed" @click="removeCompleted" v-show="tests.length > remaining">
-        Clear completed
-      </button> -->
+
     </div>
   </div>
 </template>
@@ -95,11 +70,7 @@
 <script>
 const STORAGE_KEY = "App-ManualTests";
 
-// const filters = {
-//   all: (tests) => tests,
-//   active: (tests) => tests.filter((test) => !test.completed),
-//   completed: (tests) => tests.filter((test) => test.completed),
-// };
+
 
 export default {
   // app initial state
@@ -122,26 +93,15 @@ export default {
   },
 
   mounted() {
-    // window.addEventListener('hashchange', this.onHashChange)
-    // this.onHashChange()
+
   },
 
   computed: {
-    // filteredTests() {
-    //   return filters[this.visibility](this.tests);
-    // },
-    // remaining() {
-    //   return filters.active(this.tests).length;
-    // },
+
   },
 
-  // methods that implement data logic.
-  // note there's no DOM manipulation here at all.
-  methods: {
-    toggleAll(e) {
-      this.tests.forEach((test) => (test.completed = e.target.checked));
-    },
 
+  methods: {
   addTest() {
   if (this.testTitle && this.testSteps) {
 
@@ -191,20 +151,16 @@ export default {
       this.tests = filters.active(this.tests);
     },
 
-    // onHashChange() {
-    //   var visibility = window.location.hash.replace(/#\/?/, '')
-    //   if (filters[visibility]) {
-    //     this.visibility = visibility
-    //   } else {
-    //     window.location.hash = ''
-    //     this.visibility = 'all'
-    //   }
-    // }
+
   },
 };
 </script>
 
 
 <style>
-/* @import "https://unpkg.com/todomvc-app-css@2.4.1/index.css"; */
+.test-item {
+  position: relative;
+  font-size: 24px;
+  border-bottom: 1px solid #ededed;
+}
 </style>

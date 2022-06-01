@@ -64,7 +64,7 @@
 
     <div>
       <!-- <TestsParent/> -->
-  <TC></TC>
+  <!-- <TC></TC> -->
     </div>
 
     <div>
@@ -90,7 +90,7 @@ import Card from "../components/Card.vue";
 import Log from "../backend/api.js";
 import CustomModal from "../components/Modal.vue";
 // import TestsParent from "../components/TestsParent.vue";
-import TC from "../components/TC.vue";
+// import TC from "../components/TC.vue";
 
 
 export default {
@@ -101,7 +101,7 @@ export default {
     Card,
     Divider,
     CustomModal,
-    TC
+    // TC
     // TestsParent,
 
   },
