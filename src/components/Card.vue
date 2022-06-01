@@ -26,7 +26,9 @@
     <div class="px-4 py-5 sm:p-6">
       <div class="flex flex-col">
         <div>
-          <ManualTest/>
+
+          <TC/>
+                 <ManualTest/>
           <CheckBoxesTree />
         </div>
         <div></div>
@@ -43,6 +45,7 @@
 
 <script>
 import ManualTest from "./ManualTest.vue";
+import TC from "./TC.vue";
 
 import CheckBoxesTree from "./CheckBoxesTree.vue";
 
@@ -51,6 +54,7 @@ export default {
   components: {
   CheckBoxesTree,
   ManualTest,
+  TC
 
   },
   props: {

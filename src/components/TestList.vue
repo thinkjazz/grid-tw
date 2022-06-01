@@ -38,6 +38,7 @@
       <TestListItem
         v-for="(test, index) in tests"
         @remove="remove(index)"
+        @edit="edit(index)"
         :test="test"
         :key="test.id"
       >
@@ -85,24 +86,27 @@ export default {
     remove(test) {
       this.tests.splice(test, 1);
     },
-    edit() {
+    edit(test) {
       this.beforeEditCacheTitle = test.title;
       this.beforeEditCacheStep = test.step;
       this.editedTest = test;
-      console.log("Edited TESTES", this.editedTest);
+      console.log("edit(test) function calling:", this.editedTest, this.tests);
     },
-    doneEdit() {
+    doneEdit(test) {
       this.editedTest = null;
       test.title = test.title.trim();
       test.step = test.step.trim();
+      console.log("doneEdit(test) function calling:",  this.test.title, this.test.step);
+
       if (!test.title || !test.step) {
         this.remove(test);
       }
     },
-    cancelEdit() {
+    cancelEdit(test) {
       this.editedTodo = null;
       test.title = this.beforeEditCacheTitle;
       test.step = this.beforeEditCacheStep;
+      console.log("cancelEdit(test) function calling:",  this.test.title, this.test.step);
     },
     clearAll() {
       this.tests = [];

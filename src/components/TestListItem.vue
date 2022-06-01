@@ -22,17 +22,14 @@ export default {
     remove() {
       this.$emit("remove");
     },
-    complete() {
-      this.$emit("complete");
-    },
     edit(test) {
       this.$emit("edit", test);
     },
-    doneEdit() {
-      this.$emit("doneEdit");
+    doneEdit(test) {
+      this.$emit("doneEdit", test);
     },
-    cancelEdit() {
-      this.$emit("cancelEdit");
+    cancelEdit(test) {
+      this.$emit("cancelEdit", test);
     },
   }
 };

@@ -62,8 +62,9 @@
       <Divider />
     </form>
 
-    <div><TestsParent/>
-
+    <div>
+      <!-- <TestsParent/> -->
+  <TC></TC>
     </div>
 
     <div>
@@ -88,7 +89,8 @@ import Divider from "../components/Divider.vue";
 import Card from "../components/Card.vue";
 import Log from "../backend/api.js";
 import CustomModal from "../components/Modal.vue";
-import TestsParent from "../components/TestsParent.vue";
+// import TestsParent from "../components/TestsParent.vue";
+import TC from "../components/TC.vue";
 
 
 export default {
@@ -99,7 +101,8 @@ export default {
     Card,
     Divider,
     CustomModal,
-    TestsParent,
+    TC
+    // TestsParent,
 
   },
   data() {

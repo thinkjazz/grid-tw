@@ -1,74 +1,79 @@
 <template>
-  <section>
-    <header class="header">
+  <div>
+    <div class ="flex flex-container">
       <input
         class="new-todo"
         autofocus
         placeholder="Input your task"
-        @keyup.enter="addTodo"
+        @keyup.enter="addTest"
+        v-model="testTitle"
       >
-   <textarea
+      {{ testTitle }}
+      <textarea
         class="new-todo"
         autofocus
         placeholder="Input your steps"
-        @keyup.enter="addTodo"
+        @keyup.enter="addTest"
+        v-model="testSteps"
       ></textarea>
-      <button @click="addTodo" class="button">Add</button>
+      {{ testSteps }}
+   <button @click="addTest" class="inline-flex items-center px-6 py-3 mx-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-amber-600">Add</button>
 
-    </header>
-    <section class="main" v-show="todos.length">
-      <input
+
+    </div>
+    <div class="flex flex-column" v-show="tests.length">
+      <!-- <input
         id="toggle-all"
         class="toggle-all"
         type="checkbox"
-        :checked="remaining === 0"
-        @change="toggleAll"
-      >
-      <label for="toggle-all">Mark all as complete</label>
 
-      <ul class="todo-list">
+        @change="toggleAll"
+      > -->
+      <!-- <label for="toggle-all">Mark all as complete</label> -->
+
+      <ul class="flex-column">
         <li
-          v-for="todo in filteredTodos"
-          class="todo"
-          :key="todo.id"
-          :class="{ completed: todo.completed, editing: todo === editedTodo }"
+          v-for="test in tests"
+          class="test-item"
+          :key="test.id"
+          :class="{ editing: test === editedTest }"
         >
           <div class="view">
-            <input class="toggle" type="checkbox" v-model="todo.completed">
-            <label @dblclick="editTodo(todo)">{{ todo.title }}</label>
-            <button class="destroy" @click="removeTodo(todo)"></button>
+            <!-- <input class="toggle" type="checkbox" v-model="test.completed"> -->
+            <label @dblclick="editTest(test)">{{ test.title }} || {{ test.steps }}</label>
+            <button class="destroy" @click="removeTest(test)"> | УДАЛИТЬ</button>
           </div>
           <input
-            v-if="todo === editedTodo"
+            v-if="test === editedTest"
             class="edit"
             type="text"
-            v-model="todo.title"
+            v-model="test.title"
             @vnode-mounted="({ el }) => el.focus()"
-            @blur="doneEdit(todo)"
-            @keyup.enter="doneEdit(todo)"
-            @keyup.escape="cancelEdit(todo)"
+            @blur="doneEdit(test)"
+            @keyup.enter="doneEdit(test)"
+            @keyup.escape="cancelEdit(test)"
           >
           <textarea
-            v-if="todo === editedTodo"
+            v-if="test === editedTest"
             class="edit"
             type="text"
-            v-model="todo.step"
+            v-model="test.steps"
             @vnode-mounted="({ el }) => el.focus()"
-            @blur="doneEdit(todo)"
-            @keyup.enter="doneEdit(todo)"
-            @keyup.escape="cancelEdit(todo)"
+            @blur="doneEdit(test)"
+            @keyup.enter="doneEdit(test)"
+            @keyup.escape="cancelEdit(test)"
           >
           </textarea>
         </li>
       </ul>
-    </section>
+    </div>
 
-    <footer class="footer" v-show="todos.length">
-      <span class="todo-count">
+    <div class="footer" v-show="tests.length">
+      <!-- <span class="todo-count">
         <strong>{{ remaining }}</strong>
         <span>{{ remaining === 1 ? 'item' : 'items' }} left</span>
-      </span>
-      <ul class="filters">
+      </span> -->
+      <!-- <ul class="filters">
         <li>
           <a href="#/all" :class="{ selected: visibility === 'all' }">All</a>
         </li>
@@ -78,125 +83,128 @@
         <li>
           <a href="#/completed" :class="{ selected: visibility === 'completed' }">Completed</a>
         </li>
-      </ul>
-      <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
+      </ul> -->
+      <!-- <button class="clear-completed" @click="removeCompleted" v-show="tests.length > remaining">
         Clear completed
-      </button>
-    </footer>
-  </section>
+      </button> -->
+    </div>
+  </div>
 </template>
 
 
 <script>
-const STORAGE_KEY = 'TC-STORAGE'
+const STORAGE_KEY = "App-ManualTests";
 
-const filters = {
-  all: (todos) => todos,
-  active: (todos) => todos.filter((todo) => !todo.completed),
-  completed: (todos) => todos.filter((todo) => todo.completed)
-}
+// const filters = {
+//   all: (tests) => tests,
+//   active: (tests) => tests.filter((test) => !test.completed),
+//   completed: (tests) => tests.filter((test) => test.completed),
+// };
 
 export default {
   // app initial state
   data: () => ({
-    todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
-    editedTodo: null,
-    visibility: 'all'
+    tests: JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"),
+    editedTest: null,
+    visibility: "all",
+    testTitle: "",
+    testSteps: "",
   }),
 
-  // watch todos change for localStorage persistence
+  // watch tests change for localStorage persistence
   watch: {
-    todos: {
-      handler(todos) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+    tests: {
+      handler(tests) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tests));
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
 
   mounted() {
-    window.addEventListener('hashchange', this.onHashChange)
-    this.onHashChange()
+    // window.addEventListener('hashchange', this.onHashChange)
+    // this.onHashChange()
   },
 
   computed: {
-    filteredTodos() {
-      return filters[this.visibility](this.todos)
-    },
-    remaining() {
-      return filters.active(this.todos).length
-    }
+    // filteredTests() {
+    //   return filters[this.visibility](this.tests);
+    // },
+    // remaining() {
+    //   return filters.active(this.tests).length;
+    // },
   },
 
   // methods that implement data logic.
   // note there's no DOM manipulation here at all.
   methods: {
     toggleAll(e) {
-      this.todos.forEach((todo) => (todo.completed = e.target.checked))
+      this.tests.forEach((test) => (test.completed = e.target.checked));
     },
 
-    addTodo(e) {
-      const value = e.target.value.trim()
-      console.log(value)
-      if (!value) {
-        return
-      }
-      this.todos.push({
+  addTest() {
+  if (this.testTitle && this.testSteps) {
+
+
+      this.tests.push({
         id: Date.now(),
-        title: value,
-        step: value,
-        completed: false
-      })
-      e.target.value = ''
+        title: this.testTitle,
+        steps: this.testSteps,
+
+      });
+      this.testTitle="";
+      this.testSteps="";
+  }
+
     },
 
-    removeTodo(todo) {
-      this.todos.splice(this.todos.indexOf(todo), 1)
+    removeTest(test) {
+      this.tests.splice(this.tests.indexOf(test), 1);
     },
 
-    editTodo(todo) {
-      this.beforeEditCacheTitle = todo.title
-      this.beforeEditCacheStep = todo.step
-      this.editedTodo = todo
-      console.log("Edited", this.editedTodo)
+    editTest(test) {
+      this.beforeEditCacheTitle = test.title;
+      this.beforeEditCacheSteps = test.steps;
+      this.editedTest = test;
+      console.log("Edited", this.editedTest);
     },
 
-    doneEdit(todo) {
-      if (!this.editedTodo) {
-        return
+    doneEdit(test) {
+      if (!this.editedTest) {
+        return;
       }
-      this.editedTodo = null
-      todo.title = todo.title.trim()
-      todo.step = todo.step.trim()
-      if (!todo.title || !todo.step) {
-        this.removeTodo(todo)
+      this.editedTest = null;
+      test.title = test.title.trim();
+      test.steps = test.steps.trim();
+      if (!test.title && !test.steps) {
+        this.removeTest(test);
       }
     },
 
-    cancelEdit(todo) {
-      this.editedTodo = null
-      todo.title = this.beforeEditCacheTitle
-      todo.step = this.beforeEditCacheStep
+    cancelEdit(test) {
+      this.editedTest = null;
+      test.title = this.beforeEditCacheTitle;
+      test.steps = this.beforeEditCacheSteps;
     },
 
     removeCompleted() {
-      this.todos = filters.active(this.todos)
+      this.tests = filters.active(this.tests);
     },
 
-    onHashChange() {
-      var visibility = window.location.hash.replace(/#\/?/, '')
-      if (filters[visibility]) {
-        this.visibility = visibility
-      } else {
-        window.location.hash = ''
-        this.visibility = 'all'
-      }
-    }
-  }
-}
+    // onHashChange() {
+    //   var visibility = window.location.hash.replace(/#\/?/, '')
+    //   if (filters[visibility]) {
+    //     this.visibility = visibility
+    //   } else {
+    //     window.location.hash = ''
+    //     this.visibility = 'all'
+    //   }
+    // }
+  },
+};
 </script>
 
 
 <style>
-@import "https://unpkg.com/todomvc-app-css@2.4.1/index.css";
+/* @import "https://unpkg.com/todomvc-app-css@2.4.1/index.css"; */
 </style>
