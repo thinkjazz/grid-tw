@@ -62,7 +62,9 @@
       <Divider />
     </form>
 
-    <div><ManualTestParent/> </div>
+    <div><TestsParent/>
+
+    </div>
 
     <div>
       <!-- <pre>{{ options }}</pre> -->
@@ -80,15 +82,14 @@ query {
 
 <script>
 import InputUrl from "../components/InputUrl.vue";
-
 import CustomButton from "../components/Button.vue";
 import CheckBoxesTree from "../components/CheckBoxesTree.vue";
-
 import Divider from "../components/Divider.vue";
 import Card from "../components/Card.vue";
 import Log from "../backend/api.js";
 import CustomModal from "../components/Modal.vue";
-import ManualTestParent from "../components/ManualTestParent.vue";
+import TestsParent from "../components/TestsParent.vue";
+
 
 export default {
   components: {
@@ -98,7 +99,7 @@ export default {
     Card,
     Divider,
     CustomModal,
-    ManualTestParent,
+    TestsParent,
 
   },
   data() {
