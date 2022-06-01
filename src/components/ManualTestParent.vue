@@ -16,16 +16,7 @@ export default {
     return {
       options: {
         manualTests: [
-          {
-            title: "Login test",
-            steps: "Check step1\nCheck step2",
-            completed: true
-          },
-          {
-            title: "Registration test",
-            steps: "step1\nstep2",
-           completed: false
-          },
+
         ],
       },
     };

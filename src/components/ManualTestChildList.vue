@@ -40,7 +40,7 @@
       <ManualTestChildItem
         v-for="(test, index, k) in tests"
         @remove="remove(index)"
-        @complete="completeTest(test)"
+        @complete="complete(test)"
         :test="test"
         :key="k"
       ></ManualTestChildItem>
@@ -84,10 +84,10 @@ export default {
         this.newText = '';
       }
     },
-    completeTest(test) {
+    complete(test) {
       test.completed = !test.completed;
     },
-    removeTest(index) {
+    remove(index) {
       this.tests.splice(index, 1);
     },
     clearCompleted() {
@@ -97,7 +97,7 @@ export default {
       this.tests = [];
     },
     inProgress(test) {
-      return ! this.isCompleted(test);
+      return !this.isCompleted(test);
     },
     isCompleted(test) {
       return test.completed;
