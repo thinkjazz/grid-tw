@@ -19,39 +19,9 @@
       </div>
       <div class="space-y-8"></div>
 
-      <!-- <ManualTest /> -->
+
       <!-- Начало компонента мануал тест-->
-      <!-- <div class="flex justify-center mt-6">
-        <div class="form-group">
-          <label>Добавить ручной тест</label>
-          <CustomButton @click="addTest">ADD</CustomButton>
-        </div>
-      </div>
 
-      <div class="flex flex-col">
-        <div
-          class="form-group"
-          v-for="(manualTest, i) in options.manualTests"
-          :key="manualTest.id"
-        >
-          <label @dblclick="removeTest(i)">Manual Test {{ i + 1 }}</label>
-
-          <input
-            v-model.trim="manualTest.title"
-            type="text"
-            class="flex-wrap flex-auto block w-full min-w-0 px-3 py-2 mt-2 border-gray-300 rounded-none rounded-r-md focus:ring-yellow-500 focus:border-yellow-500 md:text-md"
-          />
-
-          <textarea
-            v-model.trim="manualTest.steps"
-            class="flex-wrap flex-auto block w-full min-w-0 px-3 py-2 mt-2 border-gray-300 rounded-none rounded-r-md focus:ring-yellow-500 focus:border-yellow-500 md:text-md"
-          ></textarea>
-
-          <div class="flex justify-center mt-6">
-            <CustomButton @click="removeTest(i)">DEL</CustomButton>
-          </div>
-        </div>
-      </div> -->
       <!-- Конец компонента мануал тест -->
       <Card
         :headerIcons="{}"
@@ -60,6 +30,9 @@
         :testForm="{ id: 1 }"
       />
       <Divider />
+       <Card
+
+      />
     </form>
 
     <div>
@@ -110,7 +83,6 @@ export default {
       url: "qa.guru",
       uuid: "f9298b1c-cbd5-11ec-9d64-0242ac120002",
       captcha: "",
-      // manualTestsAutoIncrement: 0,
       formDone: false,
       formReady: false,
       isModalVisible: false,

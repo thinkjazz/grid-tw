@@ -2,13 +2,8 @@
 <template>
   <div class="overflow-hidden bg-white divide-y divide-gray-200 rounded-lg shadow">
     <div class="flex flex-row px-4 py-5 bg-gray-100 sm:px-6">
-
-
-
-
     <img src="../assets/img/pictogram/Java.svg" alt="Java">
-   <img src="../assets/img/pictogram/Gradle.svg" alt="Gradle">
-
+    <img src="../assets/img/pictogram/Gradle.svg" alt="Gradle">
     <img src="../assets/img/pictogram/JUnit5.svg" alt="JUnit5">
     <img src="../assets/img/pictogram/Rest-Assured.svg" alt="Rest-Assured">
     <img src="../assets/img/pictogram/Selenium.svg">
@@ -27,15 +22,18 @@
       <div class="flex flex-col">
         <div>
 
-          <TC/>
+          <TestCases/>
                  <!-- <ManualTest/> -->
           <CheckBoxesTree />
+          <CodeOption/>
         </div>
         <div></div>
         <div></div>
+
       </div>
     </div>
     <div class="px-4 py-4 sm:px-6">
+      <slot>This is the default body!</slot>
 Мы созданим для вас репозиторий с кодом тестового фреймворка и первыми автотестами. Вы сможете его склонировать себе.
       <!-- Content goes here -->
       <!-- We use less vertical padding on card footers at all sizes than on headers or body sections -->
@@ -44,17 +42,18 @@
 </template>
 
 <script>
-import ManualTest from "./ManualTest.vue";
-import TC from "./TC.vue";
-
+// import ManualTest from "./ManualTest.vue";
+import TestCases from "./TestCases.vue";
 import CheckBoxesTree from "./CheckBoxesTree.vue";
+import CodeOption from "./CodeOption.vue";
 
 export default {
 
   components: {
   CheckBoxesTree,
-  ManualTest,
-  TC
+  // ManualTest,
+  TestCases,
+  CodeOption
 
   },
   props: {

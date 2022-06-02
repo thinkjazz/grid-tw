@@ -10,6 +10,7 @@ const purgeConfig = require('./purgecss.config');
 
 
 
+
 const postcssPlugins = [
   tailwind(),
 ];
