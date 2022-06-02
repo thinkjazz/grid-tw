@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class ="flex flex-container">
+    <div class="flex">
       <input
         class="new-todo"
         autofocus
         placeholder="Input your task"
         @keyup.enter="addTest"
         v-model="testTitle"
-      >
+      />
       {{ testTitle }}
       <textarea
         class="new-todo"
@@ -17,12 +17,14 @@
         v-model="testSteps"
       ></textarea>
       {{ testSteps }}
-   <button @click="addTest" class="inline-flex items-center px-6 py-3 mx-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-amber-600">Add</button>
-
-
+      <button
+        @click="addTest"
+        class="inline-flex items-center px-6 py-3 mx-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-amber-600"
+      >
+        Add
+      </button>
     </div>
     <div class="flex flex-column" v-show="tests.length">
-
       <ul class="flex-column">
         <li
           v-for="test in tests"
@@ -31,9 +33,8 @@
           :class="{ editing: test === editedTest }"
         >
           <div class="view">
-
             <label @dblclick="editTest(test)">{{ test.title }} </label>
-            <button class="destroy" @click="removeTest(test)"> | УДАЛИТЬ</button>
+            <button class="destroy" @click="removeTest(test)">| УДАЛИТЬ</button>
           </div>
           <input
             v-if="test === editedTest"
@@ -44,7 +45,7 @@
             @blur="doneEdit(test)"
             @keyup.enter="doneEdit(test)"
             @keyup.escape="cancelEdit(test)"
-          >
+          />
           <textarea
             v-if="test === editedTest"
             class="edit"
@@ -60,19 +61,22 @@
       </ul>
     </div>
 
-    <div class="footer" v-show="tests.length">
-
-    </div>
+    <div class="footer" v-show="tests.length"></div>
   </div>
 </template>
 
-
 <script>
 const STORAGE_KEY = "App-ManualTests";
-
-
+import CustomButton from "./Button.vue";
+import CustomInput from "./Input.vue";
+import CustomTextArea from "./TextArea.vue";
 
 export default {
+  components: {
+    CustomButton,
+    CustomInput,
+    CustomTextArea
+  },
   // app initial state
   data: () => ({
     tests: JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"),
@@ -82,7 +86,7 @@ export default {
     testSteps: "",
   }),
 
-  // watch tests change for localStorage persistence
+  // watch tests change for localStorage
   watch: {
     tests: {
       handler(tests) {
@@ -91,31 +95,17 @@ export default {
       deep: true,
     },
   },
-
-  mounted() {
-
-  },
-
-  computed: {
-
-  },
-
-
   methods: {
-  addTest() {
-  if (this.testTitle && this.testSteps) {
-
-
-      this.tests.push({
-        id: Date.now(),
-        title: this.testTitle,
-        steps: this.testSteps,
-
-      });
-      this.testTitle="";
-      this.testSteps="";
-  }
-
+    addTest() {
+      if (this.testTitle && this.testSteps) {
+        this.tests.push({
+          id: Date.now(),
+          title: this.testTitle,
+          steps: this.testSteps,
+        });
+        this.testTitle = "";
+        this.testSteps = "";
+      }
     },
 
     removeTest(test) {
@@ -150,12 +140,9 @@ export default {
     removeCompleted() {
       this.tests = filters.active(this.tests);
     },
-
-
   },
 };
 </script>
-
 
 <style>
 .test-item {
